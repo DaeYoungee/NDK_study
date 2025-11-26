@@ -15,14 +15,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.ndkstudy.ui.theme.NDKSTUDYTheme
 
 class MainActivity : ComponentActivity() {
+
+    external fun getNativeText(): String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        System.loadLibrary("native-lib")
+
         setContent {
             NDKSTUDYTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
-                        Text(text = this::class.simpleName.toString())
+                        Text(text = getNativeText())
                     }
                 }
             }

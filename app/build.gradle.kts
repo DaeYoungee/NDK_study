@@ -37,6 +37,12 @@ android {
     buildFeatures {
         compose = true
     }
+    externalNativeBuild {
+        ndkBuild {
+            path("src/main/cpp/Android.mk")
+        }
+    }
+    ndkVersion = "29.0.13113456"
 }
 
 dependencies {
